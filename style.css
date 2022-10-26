@@ -9,7 +9,7 @@ img.sealion {
     top:0px;
     animation-name: sealion;
     visibility: hidden;
-      animation-duration: 6s;
+      animation-duration: 12s;
       animation-delay: 2s;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
