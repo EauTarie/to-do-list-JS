@@ -1,16 +1,38 @@
-const liNumber = document.querySelectorAll('li')
-
-let longueur = liNumber.length
+// Paramètre globaux (capture de la liste, catch phrase, console liNumber) //
+let liNumber = document.querySelectorAll('li')
+let catchPhrase = "Le nombre d'élément dans la liste est de  : ";
 console.log(liNumber)
-const ul = document.getElementById('first-todo')
 
+
+// CREATION D'UN ELEMENT DANS LA LISTE //
 document.getElementById('submit').addEventListener('click', e=>{
     
+    liNumber = document.querySelectorAll('li')
     const li = document.createElement("li")
+    li.setAttribute('id', liNumber.length+1)
     const inputValue =document.getElementById('todo-add').value
     const text = document.createTextNode(inputValue)
+    const button = document.createElement('button')
+    button.setAttribute('id',liNumber.length+1)
+    button.setAttribute('onclick', 'functionDelete()')
+    // button.createTextNode('Supprimer')
     li.appendChild(text)
-    // document.append(ul)
+    li.appendChild(button)
     document.getElementById("first-todo").appendChild(li);
-    // console.log(toDoData)
+    console.log(e)
+    document.getElementById('list-length').innerHTML = catchPhrase + (liNumber.length+1)
 })
+
+let buttonNumber = document.querySelectorAll('.delete')
+console.log(buttonNumber);
+// SUPPRESSION D'UN ELEMENT DANS LA LISTE //
+buttonNumber.forEach(element => {
+    console.log(element);
+    document.buttonNumber.addEventListener('click', e=>{
+        console.log(e)
+    })}
+);
+
+// TEXTE LONGUEUR DE LA LISTE //
+document.getElementById('list-length').innerHTML = 
+catchPhrase + liNumber.length
