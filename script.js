@@ -1,47 +1,61 @@
-// Paramètre globaux (capture de la liste, catch phrase, console liNumber) //
-let liNumber = document.querySelectorAll('li')
-let catchPhrase = "Le nombre d'élément dans la liste est de  : ";
-console.log(liNumber)
+//Declaration des constantes globals//
+const catchPhrase = "Total des taches à faire : "
+const finishedCatchPhrase = "Bravo ! Vous avez fini toutes vos tâches !"
+let numberOfLi = document.querySelectorAll('li')
+console.log(numberOfLi)
 
+/* 
+HELPER FUNCTION TO SET ATTRIBUTES 
+[
+    ref: 
+    https://stackoverflow.com/questions/12274748/setting-multiple-attributes-for-an-element-at-once-with-javascript
+    ]
+*/ 
+function setAttributes(el, attrs) {
+    for(let key in attrs) {
+      el.setAttribute(key, attrs[key]);
+    }
+  }
 
-// CREATION D'UN ELEMENT DANS LA LISTE //
-document.getElementById('submit').addEventListener('click', e=>{
-    
-    liNumber = document.querySelectorAll('li')
-    const li = document.createElement("li")
-    li.setAttribute('class', 'delete')
-    li.setAttribute('id', liNumber.length+1)
+// AJOUTE UNE TACHE LISTE //
+function addTask() {
+    // Creation de la liste //
+    const newLi= document.createElement('li')
+    setAttributes(newLi, {'class' : 'delete', 'id' : numberOfLi.length+1})
     const inputValue =document.getElementById('todo-add').value
-    const text = document.createTextNode(inputValue)
-    const button = document.createElement('button')
-    button.setAttribute('id',liNumber.length+1)
-    button.setAttribute('onclick', 'FunctionDelete()')
-    // button.createTextNode('Supprimer')
-    li.appendChild(text)
-    li.appendChild(button)
-    document.getElementById("first-todo").appendChild(li);
-    console.log(e)
-    document.getElementById('list-length').innerHTML = catchPhrase + (liNumber.length+1)
-})
+    const liText = document.createTextNode(inputValue)
+    newLi.appendChild(liText)
+    document.getElementById("first-todo").appendChild(newLi);
 
-let buttonNumber = document.querySelectorAll('.delete')
-console.log(buttonNumber);
-// SUPPRESSION D'UN ELEMENT DANS LA LISTE //
+    // Creation du bouton //
+    const newButton = document.createElement('button')
+    setAttributes(newButton, { 'class' : 'delete', 'id' : numberOfLi.length+1, 'onclick' : 'deleteTask(this)'})
+    const buttonText = document.createTextNode('Supprimer')
+     newButton.appendChild(buttonText);
+    //test//
+    document.getElementById(newLi['id']).appendChild(newButton)
+    //fin test//
 
-
-// TEST //
-
-const boxes = document.getElementsByClassName('delete');
-
-for (const deletes of boxes) {
-  deletes.addEventListener('click', (event) => {
-    liNumber = document.querySelectorAll('li')
-    event.target.remove();
-    document.getElementById('list-length').innerHTML = catchPhrase + (liNumber.length -1)
-  });
+    // Get the length of all the li //
+    numberOfLi = document.querySelectorAll('li')
+    document.getElementById('list-length').innerHTML = catchPhrase + numberOfLi.length
+    console.log(setAttributes)
 }
 
-//FIN TEST //
-// TEXTE LONGUEUR DE LA LISTE //
-document.getElementById('list-length').innerHTML = 
-catchPhrase + liNumber.length
+// Supprimer une tache de la liste //
+
+function deleteTask(e) {
+    e.parentNode.remove()
+    numberOfLi = document.querySelectorAll('li')
+    document.getElementById('list-length').innerHTML = catchPhrase + numberOfLi.length 
+    // Décompte des tâches // 
+    if(numberOfLi.length>0) {
+        document.getElementById('list-length').innerHTML = catchPhrase + numberOfLi.length
+    } else {
+        document.getElementById('list-length').innerHTML = finishedCatchPhrase
+        }
+}
+
+
+// Résumé des taches à faire : //
+document.getElementById('list-length').innerHTML = catchPhrase + numberOfLi.length

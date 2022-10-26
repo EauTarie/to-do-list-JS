@@ -1,0 +1,27 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+img.sealion {
+    width:90%;
+    position: absolute;
+    top:0px;
+    animation-name: sealion;
+    visibility: hidden;
+      animation-duration: 6s;
+      animation-delay: 2s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-direction: alternate,reverse,normal
+  }
+
+  @keyframes sealion{
+    0% {
+      transform: translate(-400vh);
+      visibility: visible;
+  }
+    100% {
+      transform: translate(200vh);
+  }
+  }
