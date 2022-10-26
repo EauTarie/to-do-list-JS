@@ -9,12 +9,13 @@ document.getElementById('submit').addEventListener('click', e=>{
     
     liNumber = document.querySelectorAll('li')
     const li = document.createElement("li")
+    li.setAttribute('class', 'delete')
     li.setAttribute('id', liNumber.length+1)
     const inputValue =document.getElementById('todo-add').value
     const text = document.createTextNode(inputValue)
     const button = document.createElement('button')
     button.setAttribute('id',liNumber.length+1)
-    button.setAttribute('onclick', 'functionDelete()')
+    button.setAttribute('onclick', 'FunctionDelete()')
     // button.createTextNode('Supprimer')
     li.appendChild(text)
     li.appendChild(button)
@@ -26,13 +27,21 @@ document.getElementById('submit').addEventListener('click', e=>{
 let buttonNumber = document.querySelectorAll('.delete')
 console.log(buttonNumber);
 // SUPPRESSION D'UN ELEMENT DANS LA LISTE //
-buttonNumber.forEach(element => {
-    console.log(element);
-    document.buttonNumber.addEventListener('click', e=>{
-        console.log(e)
-    })}
-);
 
+
+// TEST //
+
+const boxes = document.getElementsByClassName('delete');
+
+for (const deletes of boxes) {
+  deletes.addEventListener('click', (event) => {
+    liNumber = document.querySelectorAll('li')
+    event.target.remove();
+    document.getElementById('list-length').innerHTML = catchPhrase + (liNumber.length -1)
+  });
+}
+
+//FIN TEST //
 // TEXTE LONGUEUR DE LA LISTE //
 document.getElementById('list-length').innerHTML = 
 catchPhrase + liNumber.length

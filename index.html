@@ -9,14 +9,21 @@
 <body>
     <h1>To do list</h1>
     <ol id="first-todo">
-        <li id="1">Introduire de nouveau les otaries sur la planète <button class="delete">Supprimer</button></li>
-        <li id="2">Introduire de nouveau les animaux marins <button class="delete">Supprimer</button></li>
-        <li id="3">Se débarasser des papillons <span>de lumière</span> <button class="delete">Supprimer</button></li>
+        <li class="delete" id="1">Introduire de nouveau les otaries sur la planète <button onclick="FunctionDelete()" class="delete">Supprimer</button></li>
+        <li class="delete" id="2">Introduire de nouveau les animaux marins <button onclick="FunctionDelete()" class="delete">Supprimer</button></li>
+        <li class="delete" id="3">Se débarasser des papillons <span>de lumière</span> <button onclick="FunctionDelete()" class="delete">Supprimer</button></li>
     </ol>
     <label for="todo-add">Ajouter quelque chose à la liste : </label>
     <input type="text" id="todo-add" placeholder="Ajouter les narvals">
     <button id="submit">Valider</button>
     <h2 id="list-length"></h2>
+    
+    <!-- A ENLEVER AVANT DE PUSH SUR GIT-->
+    
+    <img style="width:300px;"src="https://media.tenor.com/4iqJFHzJIDsAAAAS/cat-scream.gif" alt="">
+    
+     <!-- A ENLEVER AVANT DE PUSH SUR GIT-->
+     
     <script rel="script" src="script.js" defer></script>
 </body>
 </html>
